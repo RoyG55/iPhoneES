@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>GUI.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+GUI.py</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">sys</span>
+<span class="s0">from </span><span class="s1">PyQt6</span><span class="s2">.</span><span class="s1">QtWidgets </span><span class="s0">import </span><span class="s2">(</span><span class="s1">QApplication</span><span class="s2">, </span><span class="s1">QWidget</span><span class="s2">, </span><span class="s1">QLabel</span><span class="s2">, </span><span class="s1">QPushButton</span><span class="s2">, </span><span class="s1">QVBoxLayout</span><span class="s2">)</span>
+<span class="s0">from </span><span class="s1">main_Win_st_1 </span><span class="s0">import </span><span class="s1">NewWindow</span>
+<span class="s0">from </span><span class="s1">PyQt6</span><span class="s2">.</span><span class="s1">QtGui </span><span class="s0">import </span><span class="s1">QFont</span>
+<span class="s0">from </span><span class="s1">PyQt6</span><span class="s2">.</span><span class="s1">QtCore </span><span class="s0">import </span><span class="s1">Qt</span>
+
+
+<span class="s0">class </span><span class="s1">mainWindow</span><span class="s2">(</span><span class="s1">QWidget</span><span class="s2">):</span>
+    <span class="s0">def </span><span class="s1">__init__</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s1">super</span><span class="s2">().</span><span class="s1">__init__</span><span class="s2">()</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">iniUI</span><span class="s2">()</span>
+
+    <span class="s0">def </span><span class="s1">iniUI</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">setMinimumHeight</span><span class="s2">(</span><span class="s3">300</span><span class="s2">)</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">setMinimumWidth</span><span class="s2">(</span><span class="s3">300</span><span class="s2">)</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">setWindowTitle</span><span class="s2">(</span><span class="s4">&quot;iCPU-Fix ExpSys&quot;</span><span class="s2">)</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">generar_formulario</span><span class="s2">()</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">show</span><span class="s2">()</span>
+
+    <span class="s0">def </span><span class="s1">generar_formulario</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s1">welcome_mesage </span><span class="s2">= </span><span class="s1">QLabel</span><span class="s2">(</span><span class="s4">&quot;Analizador de fallas de encendido&quot;</span><span class="s2">)</span>
+        <span class="s1">welcome_mesage</span><span class="s2">.</span><span class="s1">setFont</span><span class="s2">(</span><span class="s1">QFont</span><span class="s2">(</span><span class="s4">&quot;Arial&quot;</span><span class="s2">,</span><span class="s3">20</span><span class="s2">))</span>
+        <span class="s1">welcome_mesage</span><span class="s2">.</span><span class="s1">setAlignment</span><span class="s2">(</span><span class="s1">Qt</span><span class="s2">.</span><span class="s1">AlignmentFlag</span><span class="s2">.</span><span class="s1">AlignCenter</span><span class="s2">)</span>
+        <span class="s1">select_model_label </span><span class="s2">= </span><span class="s1">QLabel</span><span class="s2">(</span><span class="s4">'Selecciona el modelo:'</span><span class="s2">)</span>
+        <span class="s1">select_model_label</span><span class="s2">.</span><span class="s1">setAlignment</span><span class="s2">(</span><span class="s1">Qt</span><span class="s2">.</span><span class="s1">AlignmentFlag</span><span class="s2">.</span><span class="s1">AlignCenter</span><span class="s2">)</span>
+        <span class="s1">iphone12_boton </span><span class="s2">= </span><span class="s1">QPushButton</span><span class="s2">(</span><span class="s4">&quot;iPhone 12&quot;</span><span class="s2">)</span>
+        <span class="s1">iphone12_boton</span><span class="s2">.</span><span class="s1">clicked</span><span class="s2">.</span><span class="s1">connect</span><span class="s2">(</span><span class="s1">self</span><span class="s2">.</span><span class="s1">open_new_window</span><span class="s2">)</span>
+        <span class="s1">iPhone12_Pro_boton </span><span class="s2">= </span><span class="s1">QPushButton</span><span class="s2">(</span><span class="s4">&quot;iPhone 12 Pro&quot;</span><span class="s2">)</span>
+
+        <span class="s1">layout </span><span class="s2">= </span><span class="s1">QVBoxLayout</span><span class="s2">()</span>
+        <span class="s1">layout</span><span class="s2">.</span><span class="s1">addWidget</span><span class="s2">(</span><span class="s1">welcome_mesage</span><span class="s2">,-</span><span class="s3">700</span><span class="s2">)</span>
+        <span class="s1">layout</span><span class="s2">.</span><span class="s1">addWidget</span><span class="s2">(</span><span class="s1">select_model_label</span><span class="s2">)</span>
+        <span class="s1">layout</span><span class="s2">.</span><span class="s1">addWidget</span><span class="s2">(</span><span class="s1">iphone12_boton</span><span class="s2">)</span>
+        <span class="s1">layout</span><span class="s2">.</span><span class="s1">addWidget</span><span class="s2">(</span><span class="s1">iPhone12_Pro_boton</span><span class="s2">)</span>
+
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">setLayout</span><span class="s2">(</span><span class="s1">layout</span><span class="s2">)</span>
+
+
+    <span class="s0">def </span><span class="s1">open_new_window</span><span class="s2">(</span><span class="s1">self</span><span class="s2">):</span>
+        <span class="s1">self</span><span class="s2">.</span><span class="s1">close</span><span class="s2">()</span>
+        <span class="s1">new_window </span><span class="s2">= </span><span class="s1">NewWindow</span><span class="s2">()</span>
+        <span class="s1">new_window</span><span class="s2">.</span><span class="s1">exec</span><span class="s2">()</span>
+
+
+
+
+
+
+
+
+
+
+
+<span class="s0">if </span><span class="s1">__name__ </span><span class="s2">== </span><span class="s4">'__main__'</span><span class="s2">:</span>
+    <span class="s1">app </span><span class="s2">= </span><span class="s1">QApplication</span><span class="s2">(</span><span class="s1">sys</span><span class="s2">.</span><span class="s1">argv</span><span class="s2">)</span>
+    <span class="s1">ventana </span><span class="s2">= </span><span class="s1">mainWindow</span><span class="s2">()</span>
+    <span class="s1">sys</span><span class="s2">.</span><span class="s1">exit</span><span class="s2">(</span><span class="s1">app</span><span class="s2">.</span><span class="s1">exec</span><span class="s2">())</span></pre>
+</body>
+</html>
